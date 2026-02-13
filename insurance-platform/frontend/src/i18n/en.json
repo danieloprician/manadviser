@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "calculator": "Calculator",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "home": {
+    "hero": {
+      "title": "Protect Your Future with Trusted Insurance",
+      "subtitle": "Professional insurance and reinsurance solutions",
+      "cta": "Find Policy"
+    },
+    "features": {
+      "title": "Why Choose Us?",
+      "trust": "Trust",
+      "experience": "Experience",
+      "support": "24/7 Support",
+      "innovation": "Innovation"
+    },
+    "categories": {
+      "title": "Product Categories",
+      "auto": "Auto Insurance",
+      "home": "Home Insurance",
+      "life": "Life Insurance",
+      "health": "Health Insurance",
+      "travel": "Travel Insurance",
+      "business": "Business Insurance"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "mission": "Our Mission",
+    "vision": "Our Vision",
+    "values": "Our Values"
+  },
+  "products": {
+    "title": "Policy Catalog",
+    "filter": "Filter",
+    "price": "Price",
+    "coverage": "Coverage",
+    "details": "Details",
+    "requestQuote": "Request Quote"
+  },
+  "calculator": {
+    "title": "Price Calculator",
+    "selectProduct": "Select Product",
+    "enterDetails": "Enter Details",
+    "calculate": "Calculate",
+    "result": "Final Price"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "success": "Message sent successfully!"
+  },
+  "admin": {
+    "loginTitle": "Admin Login",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "logging": "Logging in...",
+    "loginSuccess": "Login successful!",
+    "loginFailed": "Invalid email or password",
+    "logoutSuccess": "Logged out successfully!",
+    "dashboard": "Dashboard",
+    "policies": "Policies",
+    "categories": "Categories",
+    "contacts": "Contacts",
+    "quotes": "Quotes",
+    "quickActions": "Quick Actions",
+    "newPolicy": "New Policy",
+    "viewContacts": "View Contacts",
+    "viewQuotes": "View Quotes",
+    "refresh": "Refresh",
+    "logout": "Logout"
+  }
+}

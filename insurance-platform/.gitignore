@@ -1,0 +1,57 @@
+# Ignore build and vendor directories
+bin/
+obj/
+
+# Ignore VS Code specific files
+.vscode/
+*.code-workspace
+
+# Ignore IDE files
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Ignore dependency directories
+node_modules/
+dist/
+build/
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Ignore logs
+logs/
+*.log
+npm-debug.log*
+
+# Ignore database files
+*.mdf
+*.ldf
+*.db
+
+# Frontend specific
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# Backend specific
+**/.vs/
+**/.vscode/
+**/bin/
+**/obj/
+InsuranceAPI/Migrations/
+
+# API keys and secrets
+appsettings.secrets.json
+.env.*.secret
+
+# Testing
+coverage/
+.nyc_output/
+
+# Build outputs
+publish/

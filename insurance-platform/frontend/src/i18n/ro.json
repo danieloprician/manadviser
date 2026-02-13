@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "about": "Despre",
+    "products": "Produse",
+    "calculator": "Calculator",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "home": {
+    "hero": {
+      "title": "Protejează-ți viitorul cu asigurări de încredere",
+      "subtitle": "Soluții de asigurare și reasigurare profesionale",
+      "cta": "Caută Polita"
+    },
+    "features": {
+      "title": "De ce să ne alegi?",
+      "trust": "Încredere",
+      "experience": "Experiență",
+      "support": "Suport 24/7",
+      "innovation": "Inovație"
+    },
+    "categories": {
+      "title": "Categorii de Produse",
+      "auto": "Asigurări Auto",
+      "home": "Locuință",
+      "life": "Viață",
+      "health": "Sănătate",
+      "travel": "Călători",
+      "business": "Afaceri"
+    }
+  },
+  "about": {
+    "title": "Despre Noi",
+    "mission": "Misiunea Noastră",
+    "vision": "Viziunea Noastră",
+    "values": "Valorile Noastre"
+  },
+  "products": {
+    "title": "Catalog Polite",
+    "filter": "Filtrare",
+    "price": "Preț",
+    "coverage": "Acoperire",
+    "details": "Detalii",
+    "requestQuote": "Cere Cotație"
+  },
+  "calculator": {
+    "title": "Calculator Preț",
+    "selectProduct": "Selectează Produs",
+    "enterDetails": "Completează Detaliile",
+    "calculate": "Calculează",
+    "result": "Preț Final"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Nume Complet",
+    "email": "Email",
+    "phone": "Telefon",
+    "subject": "Subiect",
+    "message": "Mesaj",
+    "send": "Trimite",
+    "success": "Mesaj trimis cu succes!"
+  },
+  "admin": {
+    "loginTitle": "Autentificare Admin",
+    "email": "Email",
+    "password": "Parolă",
+    "login": "Autentificare",
+    "logging": "Se conectează...",
+    "loginSuccess": "Autentificare reușită!",
+    "loginFailed": "Email sau parolă incorectă",
+    "logoutSuccess": "Deconectat cu succes!",
+    "dashboard": "Panou de Control",
+    "policies": "Polite",
+    "categories": "Categorii",
+    "contacts": "Contacte",
+    "quotes": "Cotații",
+    "quickActions": "Acțiuni Rapide",
+    "newPolicy": "Polită Nouă",
+    "viewContacts": "Vezi Contacte",
+    "viewQuotes": "Vezi Cotații",
+    "refresh": "Reîncărcare",
+    "logout": "Deconectare"
+  }
+}

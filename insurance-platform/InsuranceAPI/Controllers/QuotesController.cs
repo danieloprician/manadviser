@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using InsuranceAPI.Data;
 using InsuranceAPI.Models;
 using InsuranceAPI.DTOs;
+using InsuranceAPI.Services;
 using System.Text.Json;
 
 namespace InsuranceAPI.Controllers
@@ -12,10 +13,14 @@ namespace InsuranceAPI.Controllers
     public class QuotesController : ControllerBase
     {
         private readonly InsuranceDbContext _context;
+        private readonly IEmailService _emailService;
+        private readonly ILogger<QuotesController> _logger;
 
-        public QuotesController(InsuranceDbContext context)
+        public QuotesController(InsuranceDbContext context, IEmailService emailService, ILogger<QuotesController> logger)
         {
             _context = context;
+            _emailService = emailService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -87,6 +92,27 @@ namespace InsuranceAPI.Controllers
 
             _context.Quotes.Add(quote);
             await _context.SaveChangesAsync();
+
+            // Send quote confirmation email
+            try
+            {
+                var customerName = "Client";
+                if (dto.PersonalData?.ContainsKey("name") == true)
+                {
+                    customerName = dto.PersonalData["name"]?.ToString() ?? "Client";
+                }
+                
+                await _emailService.SendQuoteConfirmationAsync(
+                    quote.Email,
+                    customerName,
+                    policy.Name,
+                    quote.CalculatedPrice
+                );
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to send quote email for quote {QuoteId}", quote.Id);
+            }
 
             return CreatedAtAction(nameof(GetQuote), new { id = quote.Id }, quote);
         }

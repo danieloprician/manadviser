@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -42,19 +44,19 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-1">
               <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
-                <h3 className="text-xl font-bold text-primary mb-4">📞 Telefon</h3>
+                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faPhone} className="mr-2" /> Telefon</h3>
                 <p className="text-gray-700 mb-2">+40 (0) 234 567 890</p>
                 <p className="text-gray-600 text-sm">Luni-Vineri 8:00-18:00</p>
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
-                <h3 className="text-xl font-bold text-primary mb-4">✉️ Email</h3>
+                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faEnvelope} className="mr-2" /> Email</h3>
                 <p className="text-gray-700">info@insurepro.ro</p>
                 <p className="text-gray-600 text-sm">Răspuns în 24 de ore</p>
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold text-primary mb-4">📍 Adresă</h3>
+                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faLocationDot} className="mr-2" /> Adresă</h3>
                 <p className="text-gray-700">Str. Principal Nr. 123</p>
                 <p className="text-gray-700">București, România</p>
                 <p className="text-gray-600 text-sm">CP 050000</p>

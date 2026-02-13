@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalculator } from '@fortawesome/free-solid-svg-icons';
 
 export default function Calculator() {
   const { t } = useTranslation();
@@ -186,7 +188,7 @@ export default function Calculator() {
               ) : (
                 <div className="bg-white p-8 rounded-lg shadow-lg flex-1 flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-3xl mb-4">🧮</p>
+                    <p className="text-4xl mb-4 text-primary"><FontAwesomeIcon icon={faCalculator} /></p>
                     <p className="text-gray-600">
                       Completează formularul și calculează prețul tău
                     </p>

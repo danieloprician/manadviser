@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder, faClipboardList, faMoneyBill, faEnvelope, faPlus, faRotate } from '@fortawesome/free-solid-svg-icons';
 
 export default function AdminDashboard() {
   const { t } = useTranslation();
@@ -61,10 +63,10 @@ export default function AdminDashboard() {
   if (!user) return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
 
   const statCards = [
-    { label: t('admin.categories'), value: stats.categories, icon: '📂', path: '/admin/categories' },
-    { label: t('admin.policies'), value: stats.policies, icon: '📋', path: '/admin/policies' },
-    { label: t('admin.quotes'), value: stats.quotes, icon: '💰', path: '/admin/quotes' },
-    { label: t('admin.contacts'), value: stats.contacts, icon: '📧', path: '/admin/contacts' }
+    { label: t('admin.categories'), value: stats.categories, icon: faFolder, path: '/admin/categories' },
+    { label: t('admin.policies'), value: stats.policies, icon: faClipboardList, path: '/admin/policies' },
+    { label: t('admin.quotes'), value: stats.quotes, icon: faMoneyBill, path: '/admin/quotes' },
+    { label: t('admin.contacts'), value: stats.contacts, icon: faEnvelope, path: '/admin/contacts' }
   ];
 
   return (
@@ -99,7 +101,7 @@ export default function AdminDashboard() {
                   onClick={() => navigate(card.path)}
                   className="bg-white rounded-lg shadow-md p-6 cursor-pointer hover:shadow-lg transition"
                 >
-                  <div className="text-4xl mb-2">{card.icon}</div>
+                  <div className="text-4xl mb-2 text-primary"><FontAwesomeIcon icon={card.icon} /></div>
                   <p className="text-gray-600 text-sm">{card.label}</p>
                   <p className="text-3xl font-bold text-primary">{card.value}</p>
                 </div>
@@ -114,25 +116,25 @@ export default function AdminDashboard() {
                   onClick={() => navigate('/admin/policies')}
                   className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary-dark transition"
                 >
-                  ➕ {t('admin.newPolicy')}
+                  <FontAwesomeIcon icon={faPlus} className="mr-2" /> {t('admin.newPolicy')}
                 </button>
                 <button
                   onClick={() => navigate('/admin/contacts')}
                   className="bg-success text-white py-2 px-4 rounded-lg hover:bg-green-600 transition"
                 >
-                  📧 {t('admin.viewContacts')}
+                  <FontAwesomeIcon icon={faEnvelope} className="mr-2" /> {t('admin.viewContacts')}
                 </button>
                 <button
                   onClick={() => navigate('/admin/quotes')}
                   className="bg-warning text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition"
                 >
-                  💰 {t('admin.viewQuotes')}
+                  <FontAwesomeIcon icon={faMoneyBill} className="mr-2" /> {t('admin.viewQuotes')}
                 </button>
                 <button
                   onClick={loadStats}
                   className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition"
                 >
-                  🔄 {t('admin.refresh')}
+                  <FontAwesomeIcon icon={faRotate} className="mr-2" /> {t('admin.refresh')}
                 </button>
               </div>
             </div>

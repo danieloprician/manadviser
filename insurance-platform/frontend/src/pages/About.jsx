@@ -1,4 +1,6 @@
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTrophy, faShield, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 export default function About() {
   const { t } = useTranslation();
@@ -39,10 +41,10 @@ export default function About() {
             <div className="bg-gray-50 p-8 rounded-lg">
               <h3 className="text-2xl font-bold text-primary mb-4">{t('about.values')}</h3>
               <ul className="text-gray-700 space-y-2">
-                <li>✓ Integritate și transparență</li>
-                <li>✓ Excelenţă în servicii</li>
-                <li>✓ Inovație continuă</li>
-                <li>✓ Responsabilitate socială</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" /> Integritate și transparență</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" /> Excelenţă în servicii</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" /> Inovație continuă</li>
+                <li><FontAwesomeIcon icon={faCheck} className="text-primary mr-2" /> Responsabilitate socială</li>
               </ul>
             </div>
           </div>
@@ -73,22 +75,22 @@ export default function About() {
           <h2 className="text-3xl font-bold text-center mb-12">Certificări și Acreditări</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             <div className="p-6 border-2 border-primary rounded-lg">
-              <div className="text-4xl mb-2">🏆</div>
+              <div className="text-4xl mb-2 text-primary"><FontAwesomeIcon icon={faTrophy} /></div>
               <p className="font-bold text-primary">ISO 9001</p>
               <p className="text-gray-600 text-sm">Quality Management</p>
             </div>
             <div className="p-6 border-2 border-primary rounded-lg">
-              <div className="text-4xl mb-2">🛡️</div>
+              <div className="text-4xl mb-2 text-primary"><FontAwesomeIcon icon={faShield} /></div>
               <p className="font-bold text-primary">FSCS</p>
               <p className="text-gray-600 text-sm">Financial Services Protection</p>
             </div>
             <div className="p-6 border-2 border-primary rounded-lg">
-              <div className="text-4xl mb-2">✅</div>
+              <div className="text-4xl mb-2 text-primary"><FontAwesomeIcon icon={faCheckCircle} /></div>
               <p className="font-bold text-primary">ASF</p>
               <p className="text-gray-600 text-sm">Insurance Supervisor Approved</p>
             </div>
             <div className="p-6 border-2 border-primary rounded-lg">
-              <div className="text-4xl mb-2">⭐</div>
+              <div className="text-4xl mb-2 text-primary"><FontAwesomeIcon icon={faStar} /></div>
               <p className="font-bold text-primary">5 Stars</p>
               <p className="text-gray-600 text-sm">Customer Rating</p>
             </div>

@@ -42,7 +42,21 @@
     "price": "Preț",
     "coverage": "Acoperire",
     "details": "Detalii",
-    "requestQuote": "Cere Cotație"
+    "requestQuote": "Cere Cotație",
+    "quoteForm": {
+      "title": "Formular Cotație",
+      "insuranceType": "Tip Asigurare",
+      "fullName": "Nume Complet",
+      "email": "Email",
+      "phone": "Telefon",
+      "age": "Vârstă",
+      "address": "Adresă",
+      "additionalInfo": "Informații Suplimentare",
+      "submit": "Trimite Cerere",
+      "cancel": "Anulează",
+      "success": "Cererea a fost trimisă cu succes! Vă vom contacta curând.",
+      "error": "Eroare la trimiterea cererii. Vă rugăm să încercați din nou."
+    }
   },
   "calculator": {
     "title": "Calculator Preț",

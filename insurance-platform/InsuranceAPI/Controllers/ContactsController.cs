@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using InsuranceAPI.Data;
 using InsuranceAPI.Models;
 using InsuranceAPI.DTOs;
+using InsuranceAPI.Services;
 
 namespace InsuranceAPI.Controllers
 {
@@ -11,10 +12,14 @@ namespace InsuranceAPI.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly InsuranceDbContext _context;
+        private readonly IEmailService _emailService;
+        private readonly ILogger<ContactsController> _logger;
 
-        public ContactsController(InsuranceDbContext context)
+        public ContactsController(InsuranceDbContext context, IEmailService emailService, ILogger<ContactsController> logger)
         {
             _context = context;
+            _emailService = emailService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -55,7 +60,21 @@ namespace InsuranceAPI.Controllers
             _context.Contacts.Add(contact);
             await _context.SaveChangesAsync();
 
-            // TODO: Send email notification
+            // Send confirmation email to customer
+            try
+            {
+                await _emailService.SendContactConfirmationAsync(contact.Email, contact.FullName);
+                
+                // Notify admin about new contact
+                await _emailService.SendAdminNotificationAsync(
+                    "New Contact Message",
+                    $"New contact from {contact.FullName} ({contact.Email}). Subject: {contact.Subject}"
+                );
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to send email for contact {ContactId}", contact.Id);
+            }
 
             return CreatedAtAction(nameof(GetContact), new { id = contact.Id }, contact);
         }

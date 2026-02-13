@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using InsuranceAPI.Data;
 using InsuranceAPI.Services;
 
@@ -13,6 +15,12 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
+
+// Add FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -39,6 +47,9 @@ if (!string.IsNullOrEmpty(jwtSecret) && jwtSecret.Length >= 32)
 
 // Add AuthService
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+// Add EmailService
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Add Entity Framework Core - Default to InMemory for development
 builder.Services.AddDbContext<InsuranceDbContext>(options =>

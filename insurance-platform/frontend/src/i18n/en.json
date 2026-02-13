@@ -42,7 +42,21 @@
     "price": "Price",
     "coverage": "Coverage",
     "details": "Details",
-    "requestQuote": "Request Quote"
+    "requestQuote": "Request Quote",
+    "quoteForm": {
+      "title": "Quote Form",
+      "insuranceType": "Insurance Type",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "age": "Age",
+      "address": "Address",
+      "additionalInfo": "Additional Information",
+      "submit": "Submit Request",
+      "cancel": "Cancel",
+      "success": "Request submitted successfully! We will contact you soon.",
+      "error": "Error submitting request. Please try again."
+    }
   },
   "calculator": {
     "title": "Price Calculator",

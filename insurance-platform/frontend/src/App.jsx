@@ -14,6 +14,7 @@ import AdminPolicies from './pages/AdminPolicies';
 import AdminCategories from './pages/AdminCategories';
 import AdminContacts from './pages/AdminContacts';
 import AdminQuotes from './pages/AdminQuotes';
+import RCAFormPage from './pages/RCAFormPage';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/rca-form" element={<RCAFormPage />} />
             <Route path="/calculator" element={<Calculator />} />
             <Route path="/contact" element={<Contact />} />
 

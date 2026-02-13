@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import logo from '../../assets/logo.png';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -14,10 +15,10 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md border-b-4 border-primary">
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-primary">
-            InsurePro
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="InsurePro Logo" className="h-20 w-auto" />
           </Link>
           
           {/* Desktop Menu */}

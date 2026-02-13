@@ -1,6 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCar, faHome, faHeart, faBriefcaseMedical, faPlaneUp, faBriefcase, faCheck, faChartLine, faClock, faRocket, faStar } from '@fortawesome/free-solid-svg-icons';
+
+const categoryIcons = {
+  1: faCar,
+  2: faHome,
+  3: faHeart,
+  4: faBriefcaseMedical,
+  5: faPlaneUp,
+  6: faBriefcase
+};
 
 export default function Home() {
   const { t } = useTranslation();
@@ -17,12 +28,12 @@ export default function Home() {
         console.log('Using mock data for categories');
         // Mock data for development
         setCategories([
-          { id: 1, name_Ro: t('home.categories.auto'), name_En: 'Auto Insurance', icon: '🚗' },
-          { id: 2, name_Ro: t('home.categories.home'), name_En: 'Home Insurance', icon: '🏠' },
-          { id: 3, name_Ro: t('home.categories.life'), name_En: 'Life Insurance', icon: '❤️' },
-          { id: 4, name_Ro: t('home.categories.health'), name_En: 'Health Insurance', icon: '⚕️' },
-          { id: 5, name_Ro: t('home.categories.travel'), name_En: 'Travel Insurance', icon: '✈️' },
-          { id: 6, name_Ro: t('home.categories.business'), name_En: 'Business Insurance', icon: '💼' },
+          { id: 1, name_Ro: t('home.categories.auto'), name_En: 'Auto Insurance' },
+          { id: 2, name_Ro: t('home.categories.home'), name_En: 'Home Insurance' },
+          { id: 3, name_Ro: t('home.categories.life'), name_En: 'Life Insurance' },
+          { id: 4, name_Ro: t('home.categories.health'), name_En: 'Health Insurance' },
+          { id: 5, name_Ro: t('home.categories.travel'), name_En: 'Travel Insurance' },
+          { id: 6, name_Ro: t('home.categories.business'), name_En: 'Business Insurance' },
         ]);
       } finally {
         setLoading(false);
@@ -54,22 +65,22 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">{t('home.features.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl mb-4">✓</div>
+              <div className="text-4xl mb-4 text-primary"><FontAwesomeIcon icon={faCheck} /></div>
               <h3 className="text-xl font-bold text-primary mb-2">{t('home.features.trust')}</h3>
               <p className="text-gray-600">Over 20 years of trust and reliability</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl mb-4">📊</div>
+              <div className="text-4xl mb-4 text-primary"><FontAwesomeIcon icon={faChartLine} /></div>
               <h3 className="text-xl font-bold text-primary mb-2">{t('home.features.experience')}</h3>
               <p className="text-gray-600">Extensive experience in insurance market</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl mb-4">🕐</div>
+              <div className="text-4xl mb-4 text-primary"><FontAwesomeIcon icon={faClock} /></div>
               <h3 className="text-xl font-bold text-primary mb-2">{t('home.features.support')}</h3>
               <p className="text-gray-600">Round the clock customer support</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg">
-              <div className="text-4xl mb-4">🚀</div>
+              <div className="text-4xl mb-4 text-primary"><FontAwesomeIcon icon={faRocket} /></div>
               <h3 className="text-xl font-bold text-primary mb-2">{t('home.features.innovation')}</h3>
               <p className="text-gray-600">Latest technology and solutions</p>
             </div>
@@ -85,7 +96,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((cat) => (
                 <div key={cat.id} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition cursor-pointer">
-                  <div className="text-4xl mb-3">{cat.icon}</div>
+                  <div className="text-4xl mb-3 text-primary"><FontAwesomeIcon icon={categoryIcons[cat.id]} /></div>
                   <h3 className="text-xl font-bold text-primary mb-2">{cat.name_Ro}</h3>
                   <p className="text-gray-600">{cat.name_En}</p>
                 </div>
@@ -104,7 +115,7 @@ export default function Home() {
               <div key={i} className="bg-gray-50 p-6 rounded-lg">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <span key={j} className="text-yellow-400">⭐</span>
+                    <FontAwesomeIcon key={j} icon={faStar} className="text-yellow-400" />
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4">

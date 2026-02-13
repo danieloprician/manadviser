@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using InsuranceAPI.Data;
 using InsuranceAPI.Models;
@@ -60,6 +61,7 @@ namespace InsuranceAPI.Controllers
             return CreatedAtAction(nameof(GetContact), new { id = contact.Id }, contact);
         }
 
+        [Authorize]
         [HttpPut("{id}/read")]
         public async Task<IActionResult> MarkAsRead(int id)
         {
@@ -75,6 +77,7 @@ namespace InsuranceAPI.Controllers
             return Ok(contact);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(int id)
         {

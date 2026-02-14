@@ -18,7 +18,7 @@ export default function Contact() {
       toast.success(t('contact.success'));
       reset();
     } catch (error) {
-      toast.error('Eroare! Te rog încearcă din nou.');
+      toast.error(t('contact.error'));
       console.log('Using mock submission');
       toast.success(t('contact.success'));
       reset();
@@ -33,7 +33,7 @@ export default function Contact() {
       <section className="bg-gradient-to-r from-primary to-accent text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl font-bold mb-2">{t('contact.title')}</h1>
-          <p className="text-lg opacity-90">Ne gatuim să te ajutăm cu orice întrebare</p>
+          <p className="text-lg opacity-90">{t('contact.subtitle')}</p>
         </div>
       </section>
 
@@ -44,29 +44,29 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="lg:col-span-1">
               <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
-                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faPhone} className="mr-2" /> Telefon</h3>
-                <p className="text-gray-700 mb-2">+40 (0) 234 567 890</p>
-                <p className="text-gray-600 text-sm">Luni-Vineri 8:00-18:00</p>
+                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faPhone} className="mr-2" /> {t('contact.phoneTitle')}</h3>
+                <p className="text-gray-700 mb-2">{t('contact.phoneNumber')}</p>
+                <p className="text-gray-600 text-sm">{t('contact.phoneHours')}</p>
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-lg mb-6">
-                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faEnvelope} className="mr-2" /> Email</h3>
-                <p className="text-gray-700">info@insurepro.ro</p>
-                <p className="text-gray-600 text-sm">Răspuns în 24 de ore</p>
+                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faEnvelope} className="mr-2" /> {t('contact.emailTitle')}</h3>
+                <p className="text-gray-700">{t('contact.emailAddress')}</p>
+                <p className="text-gray-600 text-sm">{t('contact.emailResponse')}</p>
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faLocationDot} className="mr-2" /> Adresă</h3>
-                <p className="text-gray-700">Str. Principal Nr. 123</p>
-                <p className="text-gray-700">București, România</p>
-                <p className="text-gray-600 text-sm">CP 050000</p>
+                <h3 className="text-xl font-bold text-primary mb-4"><FontAwesomeIcon icon={faLocationDot} className="mr-2" /> {t('contact.addressTitle')}</h3>
+                <p className="text-gray-700">{t('contact.addressStreet')}</p>
+                <p className="text-gray-700">{t('contact.addressCity')}</p>
+                <p className="text-gray-600 text-sm">{t('contact.addressPostcode')}</p>
               </div>
             </div>
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold mb-6 text-primary">Contactează-ne</h2>
+                <h2 className="text-2xl font-bold mb-6 text-primary">{t('contact.formTitle')}</h2>
                 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   {/* Name */}
@@ -74,9 +74,9 @@ export default function Contact() {
                     <label className="block font-bold mb-2">{t('contact.name')}</label>
                     <input
                       type="text"
-                      {...register('fullName', { required: 'Numele este obligatoriu' })}
+                      {...register('fullName', { required: t('contact.nameRequired') })}
                       className="w-full border-2 border-gray-300 rounded px-4 py-2 focus:border-primary"
-                      placeholder="Prenumele Nume"
+                      placeholder={t('contact.namePlaceholder')}
                     />
                     {errors.fullName && <p className="text-danger text-sm mt-1">{errors.fullName.message}</p>}
                   </div>
@@ -86,9 +86,9 @@ export default function Contact() {
                     <label className="block font-bold mb-2">{t('contact.email')}</label>
                     <input
                       type="email"
-                      {...register('email', { required: 'Email este obligatoriu' })}
+                      {...register('email', { required: t('contact.emailRequired') })}
                       className="w-full border-2 border-gray-300 rounded px-4 py-2 focus:border-primary"
-                      placeholder="email@example.com"
+                      placeholder={t('contact.emailPlaceholder')}
                     />
                     {errors.email && <p className="text-danger text-sm mt-1">{errors.email.message}</p>}
                   </div>
@@ -98,9 +98,9 @@ export default function Contact() {
                     <label className="block font-bold mb-2">{t('contact.phone')}</label>
                     <input
                       type="tel"
-                      {...register('phone', { required: 'Telefonul este obligatoriu' })}
+                      {...register('phone', { required: t('contact.phoneRequired') })}
                       className="w-full border-2 border-gray-300 rounded px-4 py-2 focus:border-primary"
-                      placeholder="+40 720 000 000"
+                      placeholder={t('contact.phonePlaceholder')}
                     />
                     {errors.phone && <p className="text-danger text-sm mt-1">{errors.phone.message}</p>}
                   </div>
@@ -110,9 +110,9 @@ export default function Contact() {
                     <label className="block font-bold mb-2">{t('contact.subject')}</label>
                     <input
                       type="text"
-                      {...register('subject', { required: 'Subiectul este obligatoriu' })}
+                      {...register('subject', { required: t('contact.subjectRequired') })}
                       className="w-full border-2 border-gray-300 rounded px-4 py-2 focus:border-primary"
-                      placeholder="Subiectul mesajului"
+                      placeholder={t('contact.subjectPlaceholder')}
                     />
                     {errors.subject && <p className="text-danger text-sm mt-1">{errors.subject.message}</p>}
                   </div>
@@ -121,9 +121,9 @@ export default function Contact() {
                   <div>
                     <label className="block font-bold mb-2">{t('contact.message')}</label>
                     <textarea
-                      {...register('message', { required: 'Mesajul este obligatoriu' })}
+                      {...register('message', { required: t('contact.messageRequired') })}
                       className="w-full border-2 border-gray-300 rounded px-4 py-2 h-32 focus:border-primary"
-                      placeholder="Scrie-ți mesajul..."
+                      placeholder={t('contact.messagePlaceholder')}
                     ></textarea>
                     {errors.message && <p className="text-danger text-sm mt-1">{errors.message.message}</p>}
                   </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                     disabled={loading}
                     className="w-full bg-primary text-white py-3 rounded font-bold hover:bg-blue-700 transition disabled:opacity-50"
                   >
-                    {loading ? 'Se trimite...' : t('contact.send')}
+                    {loading ? t('contact.sending') : t('contact.send')}
                   </button>
                 </form>
               </div>
@@ -142,24 +142,24 @@ export default function Contact() {
 
           {/* FAQ Section */}
           <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-primary">Întrebări Frecvente (FAQ)</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">{t('contact.faqTitle')}</h2>
             <div className="space-y-6">
               {[
                 {
-                  q: 'Cât timp durează procesul de asigurare?',
-                  a: 'Procesul durează în medie 2-3 zile lucrătoare de la semnarea documentelor.'
+                  q: t('contact.faq1Q'),
+                  a: t('contact.faq1A')
                 },
                 {
-                  q: 'Ce documente trebuie să aduc?',
-                  a: 'Aveți nevoie de buletin, dovadă de venit și dovadă de domiciliu.'
+                  q: t('contact.faq2Q'),
+                  a: t('contact.faq2A')
                 },
                 {
-                  q: 'Oferiți și asigurări online?',
-                  a: 'Da! Puteți completa formulareele și semna digital 100% online.'
+                  q: t('contact.faq3Q'),
+                  a: t('contact.faq3A')
                 },
                 {
-                  q: 'Care sunt metodele de plată?',
-                  a: 'Acceptăm transfer bancar, card și plăți în rate.'
+                  q: t('contact.faq4Q'),
+                  a: t('contact.faq4A')
                 },
               ].map((item, i) => (
                 <div key={i} className="border-l-4 border-primary pl-4">

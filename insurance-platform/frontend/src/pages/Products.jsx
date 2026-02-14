@@ -173,7 +173,7 @@ export default function Products() {
       <section className="bg-gradient-to-r from-primary to-accent text-white py-16">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl font-bold mb-2">{t('products.title')}</h1>
-          <p className="text-lg opacity-90">Găsește polita perfectă pentru nevoile tale</p>
+          <p className="text-lg opacity-90">{t('products.subtitle')}</p>
         </div>
       </section>
 
@@ -183,7 +183,7 @@ export default function Products() {
           {/* Category Filter */}
           {!loading && (
             <div className="mb-12">
-              <h2 className="text-2xl font-bold mb-6">Filtrează după categorie</h2>
+              <h2 className="text-2xl font-bold mb-6">{t('products.filterByCategory')}</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {categories.map((cat) => (
                   <button
@@ -207,14 +207,14 @@ export default function Products() {
           {!loading && (
             <div>
               <h3 className="text-2xl font-bold mb-6">
-                Disponibile: {filteredPolicies.length} polite
+                {t(filteredPolicies.length === 1 ? 'products.availableSingular' : 'products.available', { count: filteredPolicies.length })}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredPolicies.map((policy) => (
                   <div key={policy.id} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
                     <h3 className="text-xl font-bold text-primary mb-2">{policy.name}</h3>
                     <p className="text-gray-600 mb-4">{policy.coverage}</p>
-                    <p className="text-2xl font-bold text-primary mb-6">{policy.basePrice} RON/an</p>
+                    <p className="text-2xl font-bold text-primary mb-6">{policy.basePrice} {t('products.perYear')}</p>
                     
                     {/* Expandable Details */}
                     <button
@@ -227,7 +227,7 @@ export default function Products() {
                     
                     {expandedPolicy === policy.id && (
                       <div className="bg-gray-50 p-4 rounded mb-4 text-sm text-gray-700 border-l-4 border-primary">
-                        <p>Detalii extinse ale acestei polite...</p>
+                        <p>{t('products.detailsExtended')}</p>
                       </div>
                     )}
 
@@ -246,7 +246,7 @@ export default function Products() {
           {loading && (
             <div className="text-center">
               <div className="spinner mx-auto"></div>
-              <p className="mt-4 text-gray-600">Se încarcă...</p>
+              <p className="mt-4 text-gray-600">{t('products.loading')}</p>
             </div>
           )}
         </div>
@@ -270,7 +270,7 @@ export default function Products() {
                   <h2 className="text-3xl font-bold text-primary mb-2">
                     {t('products.quoteForm.title')}
                   </h2>
-                  <p className="text-gray-600">Completați formularul pentru a primi o ofertă personalizată</p>
+                  <p className="text-gray-600">{t('products.quoteForm.formDescription')}</p>
                 </div>
 
                 <form onSubmit={handleSubmitQuote}>
@@ -288,8 +288,8 @@ export default function Products() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 font-semibold cursor-not-allowed"
                       />
                       <div className="mt-2 text-sm text-gray-600">
-                        <p><strong>Acoperire:</strong> {selectedPolicy.coverage}</p>
-                        <p><strong>Preț de bază:</strong> {selectedPolicy.basePrice} RON/an</p>
+                        <p><strong>{t('products.coverageLabel')}</strong> {selectedPolicy.coverage}</p>
+                        <p><strong>{t('products.basePriceLabel')}</strong> {selectedPolicy.basePrice} {t('products.perYear')}</p>
                       </div>
                     </div>
 
@@ -416,7 +416,7 @@ export default function Products() {
                         className="flex-1 bg-primary text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={submitting}
                       >
-                        {submitting ? 'Se trimite...' : t('products.quoteForm.submit')}
+                        {submitting ? t('products.quoteForm.submitting') : t('products.quoteForm.submit')}
                       </button>
                     </div>
                   </div>

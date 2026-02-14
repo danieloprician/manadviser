@@ -1,16 +1,33 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import logo from '../../assets/logo.png';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'ro' ? 'en' : 'ro';
     i18n.changeLanguage(newLang);
     localStorage.setItem('language', newLang);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
+  const getLinkClass = (path) => {
+    return isActive(path)
+      ? 'text-primary font-bold border-b-2 border-primary'
+      : 'hover:text-primary font-medium';
+  };
+
+  const getMobileLinkClass = (path) => {
+    return isActive(path)
+      ? 'block py-2 text-primary font-bold border-l-4 border-primary pl-4'
+      : 'block py-2 text-gray-700 hover:text-primary';
   };
 
   return (
@@ -23,13 +40,12 @@ export default function Navbar() {
           
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-8 text-gray-700">
-            <li><Link to="/" className="hover:text-primary font-medium">{t('nav.home')}</Link></li>
-            <li><Link to="/about" className="hover:text-primary font-medium">{t('nav.about')}</Link></li>
-            <li><Link to="/products" className="hover:text-primary font-medium">{t('nav.products')}</Link></li>
-            <li><Link to="/calculator" className="hover:text-primary font-medium">{t('nav.calculator')}</Link></li>
-            <li><Link to="/contact" className="hover:text-primary font-medium">{t('nav.contact')}</Link></li>
+            <li><Link to="/" className={getLinkClass('/')}>{t('nav.home')}</Link></li>
+            <li><Link to="/about" className={getLinkClass('/about')}>{t('nav.about')}</Link></li>
+            <li><Link to="/products" className={getLinkClass('/products')}>{t('nav.products')}</Link></li>
+            <li><Link to="/contact" className={getLinkClass('/contact')}>{t('nav.contact')}</Link></li>
             {localStorage.getItem('token') && (
-              <li><Link to="/admin/dashboard" className="hover:text-primary font-medium text-secondary">{t('nav.admin')}</Link></li>
+              <li><Link to="/admin/dashboard" className={location.pathname.startsWith('/admin') ? 'text-primary font-bold border-b-2 border-primary' : 'hover:text-primary font-medium text-secondary'}>{t('nav.admin')}</Link></li>
             )}
           </ul>
 
@@ -70,16 +86,16 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {mobileOpen && (
           <div className="md:hidden mt-4 pb-4 border-t">
-            <Link to="/" className="block py-2 text-gray-700 hover:text-primary">{t('nav.home')}</Link>
-            <Link to="/about" className="block py-2 text-gray-700 hover:text-primary">{t('nav.about')}</Link>
-            <Link to="/products" className="block py-2 text-gray-700 hover:text-primary">{t('nav.products')}</Link>
-            <Link to="/calculator" className="block py-2 text-gray-700 hover:text-primary">{t('nav.calculator')}</Link>
-            <Link to="/contact" className="block py-2 text-gray-700 hover:text-primary">{t('nav.contact')}</Link>
+            <Link to="/" className={getMobileLinkClass('/')}>{t('nav.home')}</Link>
+            <Link to="/about" className={getMobileLinkClass('/about')}>{t('nav.about')}</Link>
+            <Link to="/products" className={getMobileLinkClass('/products')}>{t('nav.products')}</Link>
+            <Link to="/calculator" className={getMobileLinkClass('/calculator')}>{t('nav.calculator')}</Link>
+            <Link to="/contact" className={getMobileLinkClass('/contact')}>{t('nav.contact')}</Link>
             {!localStorage.getItem('token') && (
               <Link to="/admin/login" className="block py-2 text-secondary font-medium hover:text-primary">{t('nav.admin')}</Link>
             )}
             {localStorage.getItem('token') && (
-              <Link to="/admin/dashboard" className="block py-2 text-secondary font-medium hover:text-primary">{t('nav.admin')}</Link>
+              <Link to="/admin/dashboard" className={location.pathname.startsWith('/admin') ? 'block py-2 text-primary font-bold border-l-4 border-primary pl-4' : 'block py-2 text-secondary font-medium hover:text-primary'}>{t('nav.admin')}</Link>
             )}
           </div>
         )}

@@ -9,7 +9,8 @@
     "dotnet restore": true,
     "dotnet run": true,
     "npm install": true,
-    "npm run dev": true
+    "npm run dev": true,
+    "Move-Item": true
   },
   "chat.customAgentInSubagent.enabled": true
 }

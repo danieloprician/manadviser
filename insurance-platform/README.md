@@ -1,17 +1,29 @@
-# Insurance Platform - Insurance & Reinsurance Sales Website
+# ManAdviser — Intermediar Allianz Țiriac
+
+Platformă digitală de intermediere asigurări pentru polițele Allianz Țiriac cu frontend React și backend .NET 8.
+
+**🎯 Partener exclusiv**: Allianz Țiriac Asigurări S.A.  
+**🏢 Activitate**: Intermediere polițe de asigurare (nu reasigurare)  
+**📄 Autorizație ASF**: [numărul autorizației]
+
+## 📚 Documentation
+
+- **[Complete Documentation](docs/README.md)** - Overview of all documentation
+- **[Product Backlog](docs/product/PRODUCT_BACKLOG.md)** - User stories, sprint planning, and requirements
+- **[Business Analysis](docs/business/)** - Market research and business strategy
+- **[Technical Docs](docs/technical/)** - Architecture, API, and development guides
 
 ## Project Overview
-Professional insurance and reinsurance sales platform with React frontend and .NET 10 backend.
 
-### Features
-- 🏠 Home page with hero section and testimonials
-- 📋 Product catalog with 6 insurance categories (Auto, Home, Life, Health, Travel, Business)
-- 💰 Interactive price calculator
-- 📧 Contact form with validation
-- 🔐 Admin panel with JWT authentication
-- 🌍 Bilingual (Romanian & English) with i18n
-- 📱 Fully responsive design
-- 🎨 Professional styling with Tailwind CSS and #007ab3 primary color
+### Categorii Allianz Țiriac Disponibile
+- 🚗 Asigurări Auto (RCA, CASCO)
+- 🏠 Asigurări Locuință
+- ❤️ Asigurări de Viață
+- 🏥 Asigurări de Sănătate
+- ✈️ Asigurări de Călătorie
+- 💼 Asigurări Business
+
+---
 
 ## Tech Stack
 

@@ -1,0 +1,38 @@
+{
+  "name": "@code-crafters/aigile-method",
+  "version": "0.5.0",
+  "installedAt": "2026-02-23T19:51:03.768Z",
+  "format": "agents",
+  "agents": [
+    "aigile-master.md",
+    "aigile-orchestrator.agent.md",
+    "analyst.md",
+    "architect.md",
+    "code-tour.agent.md",
+    "dev.agent.md",
+    "dev.md",
+    "expert-react-frontend-engineer.agent.md",
+    "pm.md",
+    "po.md",
+    "qa.md",
+    "sm.md",
+    "ui-expert.md",
+    "ux-expert.md"
+  ],
+  "customAgents": 13,
+  "chatModes": 0,
+  "prompts": 15,
+  "mcp": {
+    "serversJson": true,
+    "mockSettings": false
+  },
+  "instructions": {
+    "java": false
+  },
+  "features": {
+    "customAgents": true,
+    "handoffs": true,
+    "runSubagent": true,
+    "mcp": true
+  }
+}

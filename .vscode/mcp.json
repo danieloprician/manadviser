@@ -1,0 +1,168 @@
+{
+  "servers": {
+    "atlassian": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "CONFLUENCE_URL",
+        "-e",
+        "CONFLUENCE_PERSONAL_TOKEN",
+        "-e",
+        "CONFLUENCE_SSL_VERIFY",
+        "-e",
+        "JIRA_URL",
+        "-e",
+        "JIRA_PERSONAL_TOKEN",
+        "-e",
+        "JIRA_SSL_VERIFY",
+        "-e",
+        "READ_ONLY_MODE",
+        "ghcr.io/sooperset/mcp-atlassian:latest"
+      ],
+      "env": {
+        "CONFLUENCE_URL": "https://confluencebt.bt.wan/",
+        "CONFLUENCE_PERSONAL_TOKEN": "${input:confluence_personal_access_token}",
+        "CONFLUENCE_SSL_VERIFY": "false",
+        "JIRA_URL": "https://jirabt.bt.wan",
+        "JIRA_PERSONAL_TOKEN": "${input:jira_personal_access_token}",
+        "JIRA_SSL_VERIFY": "false",
+        "READ_ONLY_MODE": "true"
+      }
+    },
+    "git01cj001.bt.wan": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_HOST",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e",
+        "GITHUB_TOOLSETS",
+        "-v",
+        ".aigile-core\\certificates\\git01cj001.bt.wan.crt:/etc/ssl/certs/ca-certificates.crt",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_HOST": "https://git01cj001.bt.wan",
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:git01cj001_bt_wan_personal_access_token}",
+        "GITHUB_TOOLSETS": "context,pull_requests,repos"
+      }
+    },
+    "github.com": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e",
+        "GITHUB_DYNAMIC_TOOLSETS",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_com_personal_access_token}",
+        "GITHUB_DYNAMIC_TOOLSETS": "1"
+      }
+    },
+    "sonarqube": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        ".aigile-core\\certificates\\com-app-01-dev.bt.wan.crt:/etc/ssl/certs/ca-certificates.crt",
+        "-e",
+        "SONARQUBE_TOKEN",
+        "-e",
+        "SONARQUBE_URL",
+        "mcp/sonarqube"
+      ],
+      "env": {
+        "SONARQUBE_TOKEN": "${input:sonarqube_personal_token}",
+        "SONARQUBE_URL": "http://com-app-01-dev.bt.wan:8000"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "toolkit": {
+      "command": "docker",
+      "args": [
+        "mcp",
+        "gateway",
+        "run"
+      ],
+      "type": "stdio"
+    },
+    "sequentialthinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "env": {
+        "SEQUENTIAL_THINKING_MAX_STEPS": "8"
+      }
+    },
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "${input:context7_api_key}"
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "id": "github_com_personal_access_token",
+      "type": "promptString",
+      "description": "github.com Personal Access Token"
+    },
+    {
+      "id": "git01cj001_bt_wan_personal_access_token",
+      "type": "promptString",
+      "description": "git01cj001.bt.wan Personal Access Token"
+    },
+    {
+      "id": "confluence_personal_access_token",
+      "type": "promptString",
+      "description": "Confluence Personal Access Token"
+    },
+    {
+      "id": "jira_personal_access_token",
+      "type": "promptString",
+      "description": "Jira Personal Access Token"
+    },
+    {
+      "id": "sonarqube_personal_token",
+      "type": "promptString",
+      "description": "Sonarqube personal token"
+    },
+    {
+      "id": "context7_api_key",
+      "type": "promptString",
+      "description": "Context7 API key"
+    }
+  ]
+}

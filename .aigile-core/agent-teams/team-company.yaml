@@ -1,0 +1,17 @@
+bundle:
+  name: GM Team
+  icon: 🚀
+  description: Core product development team with UI and UX.
+agents:
+  - analyst
+  - architect
+  - dev
+  - pm
+  - po
+  - qa
+  - sm
+  - ux-expert
+  - ui-expert
+workflows:
+  - product-greenfield.yaml
+  - product-brownfield.yaml
